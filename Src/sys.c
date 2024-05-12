@@ -9,8 +9,8 @@
 #include "MQ2Sensor.h"
 #include "FireSensor.h"
 
-#define Fumes_Threshold_H 50
-#define Fumes_Threshold_L 40
+#define Fumes_Threshold_H 60
+#define Fumes_Threshold_L 50
 
 uint8_t dht11_buf[5];
 uint8_t mq2_buf[2];
@@ -32,17 +32,13 @@ void _sys_Loop(void)
         /*将两个数据地址传入gui显示函数*/
         gui_Display(dht11_buf, mq2_buf);
     }
-    /*判断：如果烟雾传感器数据超过设定的上阈值*/
-    if (mq2_buf[0] >= Fumes_Threshold_H)
+    /*判断：如果烟雾传感器数据超过设定的上阈值或者火焰传感器状态为检测到火焰*/
+    if (mq2_buf[0] >= Fumes_Threshold_H || fire_alarm == FIRE_ALARM)
     {
+        /*打开蜂鸣器拉响警报*/
+        Beep_Alarm_ON();
         /*打开继电器*/
         Relays_ON();
-        /*判断：如果火焰传感器状态为检测到火焰*/
-        if (fire_alarm == FIRE_ALARM)
-        {
-            /*打开蜂鸣器拉响警报*/
-            Beep_Alarm_ON();
-        }
     }
     /*判断：如果烟雾传感器数据低于设定的下阈值，并且火焰传感器状态为未检测到火焰*/
     else if (mq2_buf[0] < Fumes_Threshold_L && fire_alarm == FIRE_DIS)

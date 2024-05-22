@@ -1,21 +1,21 @@
 /* USER CODE BEGIN Header */
 /**
-  ******************************************************************************
-  * @file           : main.h
-  * @brief          : Header for main.c file.
-  *                   This file contains the common defines of the application.
-  ******************************************************************************
-  * @attention
-  *
-  * Copyright (c) 2024 STMicroelectronics.
-  * All rights reserved.
-  *
-  * This software is licensed under terms that can be found in the LICENSE file
-  * in the root directory of this software component.
-  * If no LICENSE file comes with this software, it is provided AS-IS.
-  *
-  ******************************************************************************
-  */
+ ******************************************************************************
+ * @file           : main.h
+ * @brief          : Header for main.c file.
+ *                   This file contains the common defines of the application.
+ ******************************************************************************
+ * @attention
+ *
+ * Copyright (c) 2024 STMicroelectronics.
+ * All rights reserved.
+ *
+ * This software is licensed under terms that can be found in the LICENSE file
+ * in the root directory of this software component.
+ * If no LICENSE file comes with this software, it is provided AS-IS.
+ *
+ ******************************************************************************
+ */
 /* USER CODE END Header */
 
 /* Define to prevent recursive inclusion -------------------------------------*/
@@ -23,7 +23,8 @@
 #define __MAIN_H
 
 #ifdef __cplusplus
-extern "C" {
+extern "C"
+{
 #endif
 
 /* Includes ------------------------------------------------------------------*/
@@ -31,7 +32,8 @@ extern "C" {
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-
+#include <stdio.h>
+#include <string.h>
 /* USER CODE END Includes */
 
 /* Exported types ------------------------------------------------------------*/
@@ -46,17 +48,27 @@ extern "C" {
 
 /* Exported macro ------------------------------------------------------------*/
 /* USER CODE BEGIN EM */
+#define USART_REC_LEN 400
+  /* USER CODE END EM */
 
-/* USER CODE END EM */
+  /* Exported functions prototypes ---------------------------------------------*/
+  void Error_Handler(void);
 
-/* Exported functions prototypes ---------------------------------------------*/
-void Error_Handler(void);
+  /* USER CODE BEGIN EFP */
+  extern uint8_t USART1_RX_BUF[USART_REC_LEN];
 
-/* USER CODE BEGIN EFP */
+  typedef struct
+  {
+    uint8_t rx_data[USART_REC_LEN];
+    uint8_t rx_dn_flag;
+  } RX_DATA_STRUCT;
 
+  extern RX_DATA_STRUCT RX_DS;
 /* USER CODE END EFP */
 
 /* Private defines -----------------------------------------------------------*/
+#define DHT11_Pin GPIO_PIN_4
+#define DHT11_GPIO_Port GPIOA
 #define Key3_Pin GPIO_PIN_1
 #define Key3_GPIO_Port GPIOB
 #define Key2_Pin GPIO_PIN_10
@@ -84,9 +96,9 @@ void Error_Handler(void);
 #define LD_Pin GPIO_PIN_9
 #define LD_GPIO_Port GPIOB
 
-/* USER CODE BEGIN Private defines */
+  /* USER CODE BEGIN Private defines */
 
-/* USER CODE END Private defines */
+  /* USER CODE END Private defines */
 
 #ifdef __cplusplus
 }

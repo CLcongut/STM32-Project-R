@@ -14,6 +14,78 @@
         "files": [],
         "folders": [
           {
+            "name": "Hardware",
+            "files": [],
+            "folders": [
+              {
+                "name": "Beep",
+                "files": [
+                  {
+                    "path": "../Hardware/Beep.c"
+                  }
+                ],
+                "folders": []
+              },
+              {
+                "name": "DHT11",
+                "files": [
+                  {
+                    "path": "../Hardware/DHT11.c"
+                  }
+                ],
+                "folders": []
+              },
+              {
+                "name": "ESP01S",
+                "files": [
+                  {
+                    "path": "../Hardware/ESP01S.c"
+                  }
+                ],
+                "folders": []
+              },
+              {
+                "name": "LightSensor",
+                "files": [
+                  {
+                    "path": "../Hardware/LightSensor.c"
+                  }
+                ],
+                "folders": []
+              },
+              {
+                "name": "RainSensor",
+                "files": [
+                  {
+                    "path": "../Hardware/RainSensor.c"
+                  }
+                ],
+                "folders": []
+              },
+              {
+                "name": "ST7735S",
+                "files": [
+                  {
+                    "path": "../Hardware/lcd_init.c"
+                  },
+                  {
+                    "path": "../Hardware/lcd.c"
+                  }
+                ],
+                "folders": []
+              },
+              {
+                "name": "StepMotor",
+                "files": [
+                  {
+                    "path": "../Hardware/StepMotor.c"
+                  }
+                ],
+                "folders": []
+              }
+            ]
+          },
+          {
             "name": "MDK-ARM",
             "files": [
               {
@@ -35,6 +107,9 @@
                 "path": "../Src/gpio.c"
               },
               {
+                "path": "../Src/gui.c"
+              },
+              {
                 "path": "../Src/main.c"
               },
               {
@@ -45,6 +120,9 @@
               },
               {
                 "path": "../Src/stm32f1xx_it.c"
+              },
+              {
+                "path": "../Src/sys.c"
               },
               {
                 "path": "../Src/system_stm32f1xx.c"
@@ -284,7 +362,8 @@
           "../Drivers/CMSIS/Include",
           ".cmsis/include",
           "../MDK-ARM/RTE/_EIDE_F103C8T6",
-          ".eide/deps"
+          ".eide/deps",
+          "../Hardware"
         ],
         "libList": [],
         "sourceDirList": [],

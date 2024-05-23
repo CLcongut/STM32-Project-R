@@ -60,10 +60,10 @@ extern "C"
   typedef struct
   {
     uint8_t rx_data[USART_REC_LEN];
-    uint8_t rx_dn_flag;
-  } RX_DATA_STRUCT;
+    uint8_t rx_mqtt_en_flag;
+  } ESP_RX_STRUCT;
 
-  extern RX_DATA_STRUCT RX_DS;
+  extern ESP_RX_STRUCT ESP_RXS;
 /* USER CODE END EFP */
 
 /* Private defines -----------------------------------------------------------*/

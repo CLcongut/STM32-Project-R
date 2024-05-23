@@ -34,11 +34,8 @@
 
 /* Private define ------------------------------------------------------------*/
 /* USER CODE BEGIN PD */
-
 // #define DEBUG
-
 /* USER CODE END PD */
-
 
 /* Private macro -------------------------------------------------------------*/
 /* USER CODE BEGIN PM */
@@ -292,19 +289,18 @@ void HAL_UARTEx_RxEventCallback(UART_HandleTypeDef *huart, uint16_t Size)
   {
     HAL_UART_DMAStop(huart);
     data_len = USART_REC_LEN - __HAL_DMA_GET_COUNTER(&hdma_usart1_rx);
-    if (USART1_RX_BUF[0]) // A:0x41, W:0x57
-    {
-      memcpy(RX_DS.rx_data, USART1_RX_BUF, data_len);
-      ESP_MQTT_Recei_Data();
+
+    memcpy(ESP_RXS.rx_data, USART1_RX_BUF, data_len);
+    ESP_MQTT_Recei_Data();
 #ifdef DEBUG
-      memcpy(data_dp, USART1_RX_BUF, data_len);
-      sscanf((const char *)data_dp, "%20s", line1);
-      sscanf((const char *)data_dp + 160, "%20s", line2);
-      LCD_Fill(0, 80, 128, 105, WHITE);
-      LCD_ShowString(0, 80, line1, BLACK, WHITE, 12, 0);
-      LCD_ShowString(0, 93, line2, BLACK, WHITE, 12, 0);
+    memcpy(data_dp, USART1_RX_BUF, data_len);
+    sscanf((const char *)data_dp, "%20s", line1);
+    sscanf((const char *)data_dp + 20, "%20s", line2);
+    LCD_Fill(0, 80, 128, 105, WHITE);
+    LCD_ShowString(0, 80, line1, BLACK, WHITE, 12, 0);
+    LCD_ShowString(0, 93, line2, BLACK, WHITE, 12, 0);
 #endif
-    }
+
     /************************
      * 这条重新接收还是写在此实用，
      * 否则可以写在HAL_UART_IRQHandler(&huart1);后面试试，

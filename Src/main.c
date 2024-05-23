@@ -48,7 +48,7 @@
 
 /* USER CODE BEGIN PV */
 uint8_t USART1_RX_BUF[USART_REC_LEN];
-RX_DATA_STRUCT RX_DS;
+ESP_RX_STRUCT ESP_RXS;
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/

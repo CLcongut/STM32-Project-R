@@ -14,6 +14,78 @@
         "files": [],
         "folders": [
           {
+            "name": "Hardware",
+            "files": [],
+            "folders": [
+              {
+                "name": "Beep",
+                "files": [
+                  {
+                    "path": "../Hardware/Beep.c"
+                  }
+                ],
+                "folders": []
+              },
+              {
+                "name": "DHT11",
+                "files": [
+                  {
+                    "path": "../Hardware/DHT11.c"
+                  }
+                ],
+                "folders": []
+              },
+              {
+                "name": "ESP01S",
+                "files": [
+                  {
+                    "path": "../Hardware/ESP01S.c"
+                  }
+                ],
+                "folders": []
+              },
+              {
+                "name": "FireSensor",
+                "files": [
+                  {
+                    "path": "../Hardware/FireSensor.c"
+                  }
+                ],
+                "folders": []
+              },
+              {
+                "name": "MQ2Sensor",
+                "files": [
+                  {
+                    "path": "../Hardware/MQ2Sensor.c"
+                  }
+                ],
+                "folders": []
+              },
+              {
+                "name": "Relay",
+                "files": [
+                  {
+                    "path": "../Hardware/Relays.c"
+                  }
+                ],
+                "folders": []
+              },
+              {
+                "name": "ST7735S",
+                "files": [
+                  {
+                    "path": "../Hardware/lcd_init.c"
+                  },
+                  {
+                    "path": "../Hardware/lcd.c"
+                  }
+                ],
+                "folders": []
+              }
+            ]
+          },
+          {
             "name": "MDK-ARM",
             "files": [
               {
@@ -29,13 +101,7 @@
                 "path": "../Src/adc.c"
               },
               {
-                "path": "../Src/Beep.c"
-              },
-              {
-                "path": "../Src/DHT11.c"
-              },
-              {
-                "path": "../Src/FireSensor.c"
+                "path": "../Src/dma.c"
               },
               {
                 "path": "../Src/gpio.c"
@@ -47,16 +113,7 @@
                 "path": "../Src/main.c"
               },
               {
-                "path": "../Src/MQ2Sensor.c"
-              },
-              {
-                "path": "../Src/OLED_Data.c"
-              },
-              {
-                "path": "../Src/OLED.c"
-              },
-              {
-                "path": "../Src/Relays.c"
+                "path": "../Src/spi.c"
               },
               {
                 "path": "../Src/stm32f1xx_hal_msp.c"
@@ -66,6 +123,12 @@
               },
               {
                 "path": "../Src/sys.c"
+              },
+              {
+                "path": "../Src/system_stm32f1xx.c"
+              },
+              {
+                "path": "../Src/usart.c"
               }
             ],
             "folders": []
@@ -125,10 +188,16 @@
                 "path": "../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc.c"
               },
               {
+                "path": "../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_spi.c"
+              },
+              {
                 "path": "../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_tim_ex.c"
               },
               {
                 "path": "../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_tim.c"
+              },
+              {
+                "path": "../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_uart.c"
               },
               {
                 "path": "../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal.c"
@@ -293,7 +362,8 @@
           "../Drivers/CMSIS/Include",
           ".cmsis/include",
           "../MDK-ARM/RTE/_EIDE_F103C8T6",
-          ".eide/deps"
+          ".eide/deps",
+          "../Hardware"
         ],
         "libList": [],
         "sourceDirList": [],

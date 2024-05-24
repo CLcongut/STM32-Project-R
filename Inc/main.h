@@ -31,7 +31,9 @@ extern "C" {
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
 /* USER CODE END Includes */
 
 /* Exported types ------------------------------------------------------------*/
@@ -46,29 +48,49 @@ extern "C" {
 
 /* Exported macro ------------------------------------------------------------*/
 /* USER CODE BEGIN EM */
-
+#define USART_REC_LEN 400
 /* USER CODE END EM */
 
 /* Exported functions prototypes ---------------------------------------------*/
 void Error_Handler(void);
 
 /* USER CODE BEGIN EFP */
+  extern uint8_t USART1_RX_BUF[USART_REC_LEN];
 
+  typedef struct
+  {
+    uint8_t rx_data[USART_REC_LEN];
+    uint8_t rx_mqtt_en_flag;
+  } ESP_RX_STRUCT;
+
+  extern ESP_RX_STRUCT ESP_RXS;
 /* USER CODE END EFP */
 
 /* Private defines -----------------------------------------------------------*/
-#define Beep_Pin GPIO_PIN_3
-#define Beep_GPIO_Port GPIOA
-#define DHT11_Pin GPIO_PIN_4
-#define DHT11_GPIO_Port GPIOA
-#define Fire_Sensor_Pin GPIO_PIN_5
+#define Fire_Sensor_Pin GPIO_PIN_4
 #define Fire_Sensor_GPIO_Port GPIOA
-#define Relay_Pin GPIO_PIN_6
-#define Relay_GPIO_Port GPIOA
-#define SCL_Pin GPIO_PIN_8
-#define SCL_GPIO_Port GPIOB
-#define SDA_Pin GPIO_PIN_9
-#define SDA_GPIO_Port GPIOB
+#define Beep_Pin GPIO_PIN_5
+#define Beep_GPIO_Port GPIOA
+#define DHT11_Pin GPIO_PIN_6
+#define DHT11_GPIO_Port GPIOA
+#define Key4_Pin GPIO_PIN_0
+#define Key4_GPIO_Port GPIOB
+#define Key3_Pin GPIO_PIN_1
+#define Key3_GPIO_Port GPIOB
+#define Key2_Pin GPIO_PIN_10
+#define Key2_GPIO_Port GPIOB
+#define Key1_Pin GPIO_PIN_11
+#define Key1_GPIO_Port GPIOB
+#define BLK_Pin GPIO_PIN_12
+#define BLK_GPIO_Port GPIOB
+#define CS_Pin GPIO_PIN_13
+#define CS_GPIO_Port GPIOB
+#define DC_Pin GPIO_PIN_14
+#define DC_GPIO_Port GPIOB
+#define RES_Pin GPIO_PIN_15
+#define RES_GPIO_Port GPIOB
+#define Relay_Pin GPIO_PIN_4
+#define Relay_GPIO_Port GPIOB
 
 /* USER CODE BEGIN Private defines */
 

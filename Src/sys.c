@@ -1,6 +1,7 @@
 #include "main.h"
 #include "sys.h"
 #include "gui.h"
+#include "Flash.h"
 
 #include "lcd.h"
 #include "lcd_init.h"
@@ -116,8 +117,9 @@ void _sys_Init(void)
 {
     LCD_Init();
     LCD_Fill(0, 0, LCD_W, LCD_H, WHITE);
+    MY_Flash_Init();
     _gui_load();
-    _gui_rail_state(set_rail_state);
+    _gui_rail_state(cur_rail_state);
     _gui_rain_state(0);
 }
 
@@ -184,7 +186,8 @@ void _sys_Loop(void)
             Step_Motor_Stop();
             MotorTime = 0;
         }
-        _gui_rail_state(set_rail_state);
+        _gui_rail_state(cur_rail_state);
+        MY_Flash_Write();
     }
     /**************************************************
      * << 结束

@@ -1,6 +1,7 @@
 #include "main.h"
 #include "sys.h"
 #include "gui.h"
+#include "Flash.h"
 
 #include "lcd.h"
 #include "lcd_init.h"
@@ -29,9 +30,8 @@ uint8_t fire_state;
 uint8_t fume_state;
 uint8_t beep_state;
 uint8_t trans_task_switch;
-
-short Fumes_Threshold_L = 50;
-short Fumes_Threshold_H = 60;
+uint8_t past_ts_L;
+uint8_t past_ts_H;
 
 void Fumes_Threshold_Switch(uint8_t fsw, uint8_t fvd)
 {
@@ -205,6 +205,9 @@ void _sys_Init(void)
 {
     LCD_Init();
     LCD_Fill(0, 0, LCD_W, LCD_H, WHITE);
+    MY_Flash_Init();
+    past_ts_L = Fumes_Threshold_L;
+    past_ts_H = Fumes_Threshold_H;
     _gui_Load();
     _gui_Fumes_Alarm(Fumes_Threshold_L, Fumes_Threshold_H, fume_state, beep_state);
 }
@@ -285,6 +288,14 @@ void _sys_Loop(void)
 
     if (SYS_Time_Interval(HAL_GetTick(), PastTime2, 1500))
     {
+        _gui_show_auto_save(0);
+        if (trans_task_switch == 2 && (past_ts_L != Fumes_Threshold_L || past_ts_H != Fumes_Threshold_H))
+        {
+            past_ts_L = Fumes_Threshold_L;
+            past_ts_H = Fumes_Threshold_H;
+            MY_Flash_Write();
+            _gui_show_auto_save(1);
+        }
         PastTime2 = HAL_GetTick();
         ESP_MQTT_Trans_Data(trans_task_switch, dht11_buf[2], dht11_buf[0], mq2_buf[0], Fumes_Threshold_L, Fumes_Threshold_H, fire_state);
         if (++trans_task_switch > 3)

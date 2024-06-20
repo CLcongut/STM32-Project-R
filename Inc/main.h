@@ -1,21 +1,21 @@
 /* USER CODE BEGIN Header */
 /**
-  ******************************************************************************
-  * @file           : main.h
-  * @brief          : Header for main.c file.
-  *                   This file contains the common defines of the application.
-  ******************************************************************************
-  * @attention
-  *
-  * Copyright (c) 2024 STMicroelectronics.
-  * All rights reserved.
-  *
-  * This software is licensed under terms that can be found in the LICENSE file
-  * in the root directory of this software component.
-  * If no LICENSE file comes with this software, it is provided AS-IS.
-  *
-  ******************************************************************************
-  */
+ ******************************************************************************
+ * @file           : main.h
+ * @brief          : Header for main.c file.
+ *                   This file contains the common defines of the application.
+ ******************************************************************************
+ * @attention
+ *
+ * Copyright (c) 2024 STMicroelectronics.
+ * All rights reserved.
+ *
+ * This software is licensed under terms that can be found in the LICENSE file
+ * in the root directory of this software component.
+ * If no LICENSE file comes with this software, it is provided AS-IS.
+ *
+ ******************************************************************************
+ */
 /* USER CODE END Header */
 
 /* Define to prevent recursive inclusion -------------------------------------*/
@@ -64,6 +64,10 @@ void Error_Handler(void);
   } ESP_RX_STRUCT;
 
   extern ESP_RX_STRUCT ESP_RXS;
+
+  extern short Fumes_Threshold_L;
+  extern short Fumes_Threshold_H;
+
 /* USER CODE END EFP */
 
 /* Private defines -----------------------------------------------------------*/
@@ -89,7 +93,7 @@ void Error_Handler(void);
 #define DC_GPIO_Port GPIOB
 #define RES_Pin GPIO_PIN_15
 #define RES_GPIO_Port GPIOB
-#define Relay_Pin GPIO_PIN_4
+#define Relay_Pin GPIO_PIN_6
 #define Relay_GPIO_Port GPIOB
 
 /* USER CODE BEGIN Private defines */

@@ -135,21 +135,14 @@ void _gui_Fumes_Alarm(uint8_t d_fume_L_alarm, uint8_t d_fume_H_alarm, uint8_t b_
     }
 }
 
-#if 0
-void _gui_Display(uint8_t *dht11, uint8_t *fumes)
+void _gui_show_auto_save(uint8_t state)
 {
-    // OLED_ShowNum(temp_value_X_pos, temp_value_Y_pos, dht11[2], all_value_length, OLED_8X16);      // 温度值显示，整数两位
-    // OLED_ShowNum(temp_value_X_pos + 20, temp_value_Y_pos, dht11[3], all_value_length, OLED_8X16); // 温度值显示，小数两位
-
-    // OLED_ShowNum(humi_value_X_pos, humi_value_Y_pos, dht11[0], all_value_length, OLED_8X16);      // 湿度值显示，整数两位
-    // OLED_ShowNum(humi_value_X_pos + 20, humi_value_Y_pos, dht11[1], all_value_length, OLED_8X16); // 湿度值显示，小数两位
-
-    // OLED_ShowNum(fumes_value_X_pos, fumes_value_Y_pos, fumes[0], all_value_length, OLED_8X16);      // 烟雾浓度显示，整数两??
-    // OLED_ShowNum(fumes_value_X_pos + 20, fumes_value_Y_pos, fumes[1], all_value_length, OLED_8X16); // 烟雾浓度显示，小数两??
-
-    // OLED_Update();
-    float f_fumes;
-    f_fumes = fumes[0] + fumes[1] / 100.0;
-    LCD_ShowFloatNum1(0, 30, f_fumes, 4, BLACK, WHITE, 16);
+    if (state)
+    {
+        Draw_Circle(20, 50, 4, BLUE);
+    }
+    else
+    {
+        Draw_Circle(20, 50, 4, WHITE);
+    }
 }
-#endif
